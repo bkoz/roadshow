@@ -4,10 +4,8 @@
 
 The first thing we want to do to ensure that our *oc* command line tools was installed and successfully added to our path is login to the OpenShift Enterprise 3.0 environment that has been provided for this Roadshow session.  In order to login, we will use the *oc* command and then specify the server that we want to authenticate to.  Issue the following command:
 
-	$ oc login openshift-master.CITYNAME.openshift3roadshow.com
+	$ oc login --username=openshift-dev --password=devel --server=10.1.2.2:8443
     
-**Note:** Ensure that you replace *CITYNAME* with the correct hostname / city for your location.  This information was provided to you by the instructor of this workshop.
-
 **Note:** After entering in the above command, you may be prompted to accept the security certificate
 
 You should see the following output:
@@ -47,7 +45,7 @@ your authorization token will last for 24 hours. There is more information about
 the login command and its configuration in the [OpenShift Enterprise Documentation](https://docs.openshift.com/enterprise/3.0/cli_reference/get_started_cli.html#basic-setup-and-login).
 
     
-###**Using a project**
+###**Creating a project**
 
 Projects are a top level concept to help you organize your deployments. An
 OpenShift project allows a community of users (or a user) to organize and manage
@@ -69,11 +67,49 @@ understand all of the terminology as we will cover it in detail in later labs.
 The first thing we want to do is switch to the *userXX-smoke* project. You
 can do this with the following command:
 
-	$ oc project userXX-smoke
+	$ oc new-project smoke
    
 You will see the following confirmation message:
 
-	Now using project "userXX-smoke" on server "https://openshift-master.CITYNAME.openshift3roadshow.com:8443".
+	Now using project "smoke" on server "https://10.1.2.2:8443".
+
+Create an OpenShift application from an existing container.
+
+        $ oc new-app openshift/hello-openshift
+
+Check to see that pod is running.
+
+        $ oc get pods
+
+You should see output similar to the following:
+
+    NAME                      READY     STATUS    RESTARTS   AGE
+    hello-openshift-1-ws01j   1/1       Running   0          58s
+
+Look at the logs:
+
+         $ oc logs hello-openshift-1-ws01j
+
+Create a route by exposing the service:
+
+         $ oc expose service hello-openshift
+  
+         route "hello-openshift" exposed
+
+Using **curl** or a web browser, visit the application URL:
+
+         $ oc get route
+
+You should see output similar to the following:
+	
+    NAME      HOST/PORT                                                     PATH      SERVICE   LABELS      TLS TERMINATION
+    smoke     hello-openshift-smoke.rhel-cdk.10.1.2.2.xip.io                          smoke     app=smoke 
+
+         $ curl http://hello-openshift-smoke.rhel-cdk.10.1.2.2.xip.io
+
+The following output should be reported:
+
+         Hello OpenShift!
 
 The next thing we want to check is the routes associated with this project. A simple explanation for how routes work is:
 1. A request comes in to an OpenShift node on port 80 (HTTP) or 443 (HTTPS)
