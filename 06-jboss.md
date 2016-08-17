@@ -63,7 +63,7 @@ code on GitHub.
 
 The repository that we are going to fork is located at the following URL:
 
-[https://github.com/gshipley/openshift3mlbparks.git](https://github.com/gshipley/openshift3mlbparks.git "https://github.com/gshipley/openshift3mlbparks.git")
+[https://github.com/bkoz/openshift3mlbparks.git](https://github.com/bkoz/openshift3mlbparks.git "https://github.com/bkoz/openshift3mlbparks.git")
 
 Go ahead and fork the *mlbparks* repository into your own GitHub account. Later
 in the lab, we want you to make a code change and then rebuild your application.
@@ -86,7 +86,7 @@ application in a previous lab. However, this time we are going to specify a
 source code repository to use by using the ~ modifier as shown in the following
 command:
 
-	$ oc new-app jboss-eap6-openshift~https://github.com/YOURUSER/openshift3mlbparks.git
+	$ oc new-app --image-stream=jboss-eap64-openshift --code=https://github.com/YOUR_GITHUB_USERNAME/openshift3mlbparks.git
 
 **Note:** Ensure that you use your repository URL if you want to see S2I and
 webhooks in action later.
@@ -123,7 +123,7 @@ Once your first build is running, you'll see output like:
 Once the build is running, you are able to view the build logs with the following
 command:
 
-	$ oc build-logs openshift3mlbparks-1
+	$ oc logs openshift3mlbparks-1-build --follow
 
 After the build has completed and successfully:
 
@@ -158,11 +158,11 @@ And finally, you can find your URL by viewing the project in the web console or 
 Where you should see something like the following:
 
 	NAME                 HOST/PORT                                                           PATH      SERVICE              LABELS
-	openshift3mlbparks   openshift3mlbparks.userXX-mlbparks.cloudapps.CITYNAME.openshift3roadshow.com             openshift3mlbparks
+	openshift3mlbparks   openshift3mlbparks-sample-project.rhel-cdk.10.1.2.2.xip.io                    openshift3mlbparks
 
 In the above example, the URL is:
 
-	openshift3mlbparks.userXX-mlbparks.cloudapps.CITYNAME.openshift3roadshow.com
+	openshift3mlbparks-sample-project.rhel-cdk.10.1.2.2.xip.io
 
 Verify your application is working by viewing the URL in a web browser.  You should see the following:
 
