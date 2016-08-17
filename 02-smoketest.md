@@ -63,27 +63,19 @@ In order to view the routes for your project, enter in the following command:
 
          $ oc get route
 
-Now use **curl** or a web browser to visit the application URL:
-
 
 You should see output similar to the following:
 	
     NAME      HOST/PORT                                                     PATH      SERVICE   LABELS      TLS TERMINATION
     smoke     hello-openshift-smoke.rhel-cdk.10.1.2.2.xip.io                          smoke     app=smoke 
 
+Now use **curl** or a web browser to visit the application URL:
+
          $ curl http://hello-openshift-smoke.rhel-cdk.10.1.2.2.xip.io
 
 The following output should be reported:
 
          Hello OpenShift!
-
-
-	$ oc get routes
-    
-You should see output similar to the following:
-	
-    NAME      HOST/PORT                                                     PATH      SERVICE   LABELS      TLS TERMINATION
-    smoke     smoke.user36-smoke.cloudapps.chicago.openshift3roadshow.com             smoke     app=smoke 
 
 ###**The Web Console**
 
