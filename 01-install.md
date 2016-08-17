@@ -13,42 +13,14 @@ During this lab, we are going to download the client tool and add them to our op
 
 The first thing we want to do is download the correct executable for your operating system as linked below:
 
-- [Microsoft Windows](http://repo.openshift3roadshow.com/clients/oc-3.0.1.0-windows.zip)
-- [Apple OS X](http://repo.openshift3roadshow.com/clients/oc-3.0.1.0-macosx.tar.gz)
-- [Linux](http://repo.openshift3roadshow.com/clients/oc-3.0.1.0-linux.tar.gz)
+- [Microsoft Windows](http://presto.haveopen.com/~bkozdemb/workshop/oc-clients/windows/oc.exe)
+- [Apple OS X](http://presto.haveopen.com/~bkozdemb/workshop/oc-clients/macosx/oc)
+- [Linux](http://presto.haveopen.com/~bkozdemb/workshop/oc-clients/linux/oc)
 
 
-Once the file has been download, you will need to extract the contents as it is a compressed archive.  I would suggest saving this file to the following directories:
+Once the *oc* file has been download, copy it to some directory then add that directory to your PATH environment variable. 
 
-**Windows:**
-
-	C:\OpenShift
-
-**OS X:**
-
-	~/OpenShift
-
-**Linux:**
-
-	~/OpenShift
-
-####**Extracting the tools**
-Once you have the tools downloaded, you will need to extract the contents:
-
-**Windows:**
-In order to extract a zip archive on windows, you will need a zip utility installed on your system.  With newer versions of windows (greater than XP), this is provided by the operating system.  Just right click on the downloaded file using file explorer and select to extract the contents.
-
-**OS X:**
-Open up a terminal window and change to the directory where you downloaded the file.  Once you are in the directory, enter in the following command:
-
-	$ tar zxvf oc-3.0.1.0-macosx.tar.gz
-
-**Linux:**
-Open up a terminal window and change to the directory where you downloaded the file.  Once you are in the directory, enter in the following command:
-
-	$ tar zxvf oc-3.0.1.0-linux.tar.gz
-
-####**Adding *oc* to your PATH**
+####**Adding *oc* to your PATH environment variable**
 
 **Windows:**
 Because changing your PATH on windows varies by version of the operating system, we will not list each operating system here.  However, the general workflow is right click on your computer name inside of the file explorer.  Select Advanced system settings. I guess changing your PATH is considered an advanced task? :) Click on the advanced tab, and then finally click on Environment variables.  Once the new dialog opens, select the Path variable and add ";C:\OpenShift" at the end.  For an easy way out, you could always just copy it to C:\Windows or a directory you know is already on your path. For more detailed instructions:
@@ -81,8 +53,8 @@ At this point, we should have the oc tool available for use.  Let's test this ou
 
 You should see the following:
 
-    oc v3.0.1.0-503-g7cc6deb
-    kubernetes v1.0.0
+    oc v3.2.1.9-1-g2265530
+    kubernetes v1.2.0-36-g4a3f9c5
 
 If you get an error message, you have not updated your path correctly.  If you need help, raise your hand and the instructor will assist.
 
