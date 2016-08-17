@@ -13,9 +13,11 @@ To simulate a web hook:
 
       curl -i -H "Accept: application/json" -H "X-HTTP-Method-Override: PUT" -X POST -k <GENERIC_WEBHOOK_URL_FROM_BUILD_CONFIG>
 
+####** End of simulation **
+
 The instructor may be able to demonstrate webhooks using a public facing OpenShift instance.
 
-The following write may be of interest when you have access to an OpenShift
+The following write up may be of interest when you have access to an OpenShift
 instance with a routable IP address.
 
 OpenShift 3 supports receiving webhooks from remote code repositories when code
