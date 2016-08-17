@@ -115,7 +115,7 @@ define connections to dependent systems.  This allows for application
 portability across different environments.  The source file that performs the
 connection as well as creates the database schema can be viewed here:
 
-[DBConnection.java](https://github.com/gshipley/openshift3mlbparks/blob/master/src/main/java/org/openshift/mlbparks/mongo/DBConnection.java)
+[DBConnection.java](https://github.com/bkoz/openshift3mlbparks/blob/master/src/main/java/org/openshift/mlbparks/mongo/DBConnection.java)
 
 In short summary: By referring to environment variables to connect to services
 (like databases), it can be trivial to promote applications throughout different
@@ -139,7 +139,8 @@ Pod:
     openshift3mlbparks-1-build   0/1       ExitCode:0   0          36m
     openshift3mlbparks-2-qc9ug   1/1       Running      0          8m
 
-    $ oc exec -tip mongodb-24-rhel7-1-73af9  -- bash -c 'mongo -u mlbparks -p mlbparks mlbparks'
+    $ oc exec -ti mongodb-24-rhel7-1-73af9 bash 
+    bash-4.2$ mongo -u $MONGODB_USER -p $MONGODB_PASSWORD $MONGODB_DATABASE
 
 **Note:** If you used different credentials when you created your MongoDB Pod, ensure that you substitute them for the values above.
 **Note:** You will need to substitute the correct name for your MongoDB Pod.
@@ -149,8 +150,14 @@ Once you are connected to the database, run the following command to count the n
 
 	> db.teams.count();
 
-You can also view the json documents with the following command:
+You can also view the first json document in the teams collection with the following command:
 
-	> db.teams.find();
+	> db.teams.findOne();
+
+Exit the mongo shell and the container bash.
+
+        > exit
+        bash-4.2$ exit
+        
 
 **End of Lab 7**
