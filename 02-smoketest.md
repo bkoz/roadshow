@@ -1,49 +1,10 @@
 #** Lab 2: Smoke Test and Quick Tour **
 
-###** Command Line **
+###** Using the Command Line Interface (CLI)**
 
-The first thing we want to do to ensure that our *oc* command line tools was installed and successfully added to our path is login to the OpenShift Enterprise 3.0 environment that has been provided for this Roadshow session.  In order to login, we will use the *oc* command and then specify the server that we want to authenticate to.  Issue the following command:
+The first thing we want to do to ensure that the *oc* command line tool was installed and successfully added to our path is login to the OpenShift Enterprise 3.0 environment that has been provided for this Roadshow session.  In order to login, we will use the *oc* command and then specify the server that we want to authenticate to.  Issue the following command:
 
 	$ oc login --username=openshift-dev --password=devel --server=10.1.2.2:8443
-    
-**Note:** After entering in the above command, you may be prompted to accept the security certificate
-
-You should see the following output:
-
-	The server uses a certificate signed by an unknown authority.
-	You can bypass the certificate check, but any data you send to the server could be intercepted by others.
-	Use insecure connections? (y/n): 
-    
-Enter in *Y* to use a potentially insecure connection.  The reason you received
-this message is because we are using a self-signed certificate for this
-workshop, but we did not provide you with the CA certificate that was generated
-by OpenShift. In a real-world scenario, either OpenShift's certificate would be
-signed by a standard CA (eg: Thawte, Verisign, StartSSL, etc.) or signed by a
-corporate-standard CA that you already have installed on your system.
-
-**Note:** On some versions of Microsoft Windows, you may get an error that the server has an invalid x.509 certificate.  If you receive this error, enter in the following command:
-
-	$ oc login master.test.openshift3roadshow.com --insecure-skip-tls-verify=true
-    
-Once you issue the *oc login* command, you will be prompted for the username and password combination for your user account.  This information was provided to you by the instructor of this workshop:
-
-    Username: your_username
-    Password: your_password
-    
-Ensure that you replace *your_username* and *password* with the credentials provided to you.
-
-Once you have authenticated to the OpenShift 3 server, you will see the following confirmation message:
-
-    Login successful.
-    Using project "userXX-smoke".
-    Welcome to OpenShift! See 'oc help' to get started.    
-
-Congratulations, you are now authenticated to the OpenShift server. The
-OpenShift master includes a built-in OAuth server. Developers and administrators
-obtain OAuth access tokens to authenticate themselves to the API.. By default
-your authorization token will last for 24 hours. There is more information about
-the login command and its configuration in the [OpenShift Enterprise Documentation](https://docs.openshift.com/enterprise/3.0/cli_reference/get_started_cli.html#basic-setup-and-login).
-
     
 ###**Creating a project**
 
@@ -55,10 +16,6 @@ and limits on resources, etc).  Projects act as a "wrapper" around all the
 application services and endpoints you (or your teams) are using for your work.
 For this first lab, we are going to use a project named *userXX-smoke* that has been
 created and populated with an application for you.
-
-**Note:** The userXX-smoke project name is an example.  You will need to replace
-the *XX* with the user number assigned to you by the instructor.  For example,
-if you were assigned user07, your project will be named **user07-smoke**.
 
 During this lab, we are going to use a few different commands to make sure that
 things in the environment are working as expected.  Don't worry if you don't
@@ -96,9 +53,18 @@ Create a route by exposing the service:
   
          route "hello-openshift" exposed
 
-Using **curl** or a web browser, visit the application URL:
+The next thing we want to check is the routes associated with this project. A simple explanation for how routes work is:
+1. A request comes in to an OpenShift node on port 80 (HTTP) or 443 (HTTPS)
+1. A Docker container running the router is bound to those ports, and receives the request
+1. The router looks at the HTTP header for the host entry and matches it with a defined route
+1. The router proxies the request on to a service endpoint that corresponds to that defined route
+
+In order to view the routes for your project, enter in the following command:
 
          $ oc get route
+
+Now use **curl** or a web browser to visit the application URL:
+
 
 You should see output similar to the following:
 	
@@ -111,13 +77,6 @@ The following output should be reported:
 
          Hello OpenShift!
 
-The next thing we want to check is the routes associated with this project. A simple explanation for how routes work is:
-1. A request comes in to an OpenShift node on port 80 (HTTP) or 443 (HTTPS)
-1. A Docker container running the router is bound to those ports, and receives the request
-1. The router looks at the HTTP header for the host entry and matches it with a defined route
-1. The router proxies the request on to a service endpoint that corresponds to that defined route
-
-In order to view the routes for your *userXX-smoke* project, enter in the following command:
 
 	$ oc get routes
     
@@ -132,13 +91,10 @@ OpenShift Enterprise 3 ships with a web-based console that will allow users to
 perform various tasks via a browser.  To get a feel for how the web console
 works, open your browser and go to the following URL:
 
-	https://openshift-master.CITYNAME.openshift3roadshow.com:8443
+	https://10.1.2.2:8443
 
-The first screen you will see is the authentication screen.  Enter in the following credentials:
+Enter the same user name and password that you used with the CLI above.
 
-	Username: your_username   //Replace with your username 
-	Password: your_password   //Replace with your password
-    
 ![OpenShift 3 Login Screen](http://training.runcloudrun.com/images/roadshow/v3login.png)
 
 After you have authenticated to the web console, you will be presented with a
