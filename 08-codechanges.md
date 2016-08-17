@@ -29,7 +29,7 @@ Click the Webhooks & Services link:
 
 And finally, click on Add webhook.  On this screen, enter the URL you copied to
 your clipboard from the OpenShift web console in the Payload URL box and ensure
-that you disable SSL verification and save your changes:
+that you **disable** SSL verification and save your changes:
 
 ![Webhook](http://training.runcloudrun.com/images/roadshow/webhook4.png)
 
