@@ -3,7 +3,7 @@
 ###** Using GitHub Web Hooks **
 
 Webhooks from github will not work with the CDK because its IP address
-(and API server) are not routable to github.com. 
+(and API server) are not routable from github.com. 
 
 To simulate a web hook:
 
