@@ -2,23 +2,22 @@
 
 ###**Command Line Interface**
 
-OpenShift 3 ships with a feature rich web console as well as command line tools to provide users with a nice interface to work with applications deployed to the platform.  The OpenShift tools are a single executable written in the Go programming language and is available for the following operating systems:
+OpenShift 3 ships with a feature rich web console as well as command line tools to provide users with a nice interface to work with applications deployed to the platform.  The OpenShift CLI tool is a single executable (*oc*) written in the Go programming language and is available for the following operating systems:
 
 - Microsoft Windows
 - Apple OS X
 - Linux
 
-####**Downloading the tools**
-During this lab, we are going to download the client tool and add them to our operating system $PATH environment variables so the executable is accessible from any directory on the command line. 
+####**Downloading the CLI tool**
 
-The first thing we want to do is download the correct executable for your operating system as linked below:
+Download the correct executable for your operating system as linked below:
 
 - [Microsoft Windows](http://presto.haveopen.com/~bkozdemb/workshop/oc-clients/windows/oc.exe)
 - [Apple OS X](http://presto.haveopen.com/~bkozdemb/workshop/oc-clients/macosx/oc)
 - [Linux](http://presto.haveopen.com/~bkozdemb/workshop/oc-clients/linux/oc)
 
 
-Once the *oc* file has been download, copy it to some directory then add that directory to your PATH environment variable. 
+Once the *oc* file has been download, copy it to a directory of your choosing then add that directory to your PATH environment variable. 
 
 ####**Adding *oc* to your PATH environment variable**
 
