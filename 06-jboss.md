@@ -45,15 +45,13 @@ of saying that we are going to deploy a map of baseball stadiums.
 
 #####** Create Project **
 
-The first thing you need to do is create a new project called *userXX-mlbparks*:
+The first thing you need to do is create a new project called *mlbparks*:
 
-**Note:** Remember to replace userXX-mlbparks with your correct user number.
-
-    $ oc new-project userXX-mlbparks
+    $ oc new-project mlbparks
 
 You should see the following output:
 
-	Now using project "mlbparks" on server "https://openshift-master.CITYNAME.openshift3roadshow.com:8443".
+	Now using project "mlbparks" on server "https://10.1.2.2:8443".
 
 #####** Fork application code on GitHub **
 
