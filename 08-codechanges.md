@@ -2,6 +2,22 @@
 
 ###** Using GitHub Web Hooks **
 
+Webhooks from github will not work with the CDK because its IP address
+(and API server) are not routable to github.com. 
+
+To simulate a web hook:
+
+1) Make code changes to https://github.com/YOUR_GITHUB_USER_NAME/openshift3mlbparks/blob/master/src/main/webapp/index.html on github.com
+
+2) Copy the generic web hook from the web console's build configuration and use curl from your laptop to POST the webhook.
+
+      curl -i -H "Accept: application/json" -H "X-HTTP-Method-Override: PUT" -X POST -k <GENERIC_WEBHOOK_URL_FROM_BUILD_CONFIG>
+
+The instructor may be able to demonstrate webhooks using a public facing OpenShift instance.
+
+The following write may be of interest when you have access to an OpenShift
+instance with a routable IP address.
+
 OpenShift 3 supports receiving webhooks from remote code repositories when code
 changes, including from GitHub. When a notification is received, a new build
 will be triggered on OpenShift. This allows for automated pipeline of
