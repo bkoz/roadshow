@@ -21,12 +21,11 @@ and limits on resources, etc).  Projects act as a "wrapper" around all the
 application services and endpoints you (or your teams) are using for your work.
 For this first lab, we are going to create a project and add an application.
 
-
 During this lab, we are going to use a few different commands to make sure that
 things in the environment are working as expected.  Don't worry if you don't
 understand all of the terminology as we will cover it in detail in later labs.
 
-The first thing we want to do is create a project.
+1) Create a project
 
 	$ oc new-project smoke --display-name="Smoke Test" --description="Tests OpenShift"
    
@@ -34,50 +33,36 @@ You will see the following confirmation message:
 
 	Now using project "smoke" on server "https://10.1.2.2:8443".
 
-Create an OpenShift application from an existing container.
+2) Create an OpenShift application from an existing container.
 
         $ oc new-app openshift/hello-openshift
 
-Check to see that pod is running.
+3) Check to see that pod is running.
 
-        $ oc get pods
+        $ oc get pods 
 
 You should see output similar to the following:
 
     NAME                      READY     STATUS    RESTARTS   AGE
     hello-openshift-1-ws01j   1/1       Running   0          58s
 
-Look at the logs:
+4) Once the pod status is running, look at the logs:
 
          $ oc logs hello-openshift-1-ws01j
 
-Create a route by exposing the service:
+5) Create a route by exposing the service:
 
          $ oc expose service hello-openshift
   
+You should see output similar to the following:
+
          route "hello-openshift" exposed
 
-The next thing we want to check is the routes associated with this project. A simple explanation for how routes work is:
-1. A request comes in to an OpenShift node on port 80 (HTTP) or 443 (HTTPS)
-1. A Docker container running the router is bound to those ports, and receives the request
-1. The router looks at the HTTP header for the host entry and matches it with a defined route
-1. The router proxies the request on to a service endpoint that corresponds to that defined route
-
-In order to view the routes for your project, enter in the following command:
-
-         $ oc get route
-
-
-You should see output similar to the following:
-	
-    NAME      HOST/PORT                                                     PATH      SERVICE   LABELS      TLS TERMINATION
-    smoke     hello-openshift-smoke.rhel-cdk.10.1.2.2.xip.io                          smoke     app=smoke 
-
-Now use **curl** or a web browser to visit the application URL:
+6) Now use **curl** or a web browser to visit the application URL:
 
          $ curl http://hello-openshift-smoke.rhel-cdk.10.1.2.2.xip.io
 
-The following output should be reported:
+If everything worked, the following output should be reported:
 
          Hello OpenShift!
 
@@ -114,6 +99,24 @@ Once you have digested the information on the overview page, click on the Browse
 Go ahead and play around a bit more with the web console to get familiar with
 the various tabs and options.  However, we will be using the command line tools
 for the majority of this lab.
+
+###** More About OpenShift Routing **
+
+The next thing we want to check is the routes associated with this project. A simple explanation for how routes work is:
+1. A request comes in to an OpenShift node on port 80 (HTTP) or 443 (HTTPS)
+1. A Docker container running the router is bound to those ports, and receives the request
+1. The router looks at the HTTP header for the host entry and matches it with a defined route
+1. The router proxies the request on to a service endpoint that corresponds to that defined route
+
+In order to view the routes for your project, enter in the following command:
+
+         $ oc get route
+
+
+You should see output similar to the following:
+	
+    NAME      HOST/PORT                                                     PATH      SERVICE   LABELS      TLS TERMINATION
+    smoke     hello-openshift-smoke.rhel-cdk.10.1.2.2.xip.io                          smoke     app=smoke 
 
 
 **End of Lab 2**
