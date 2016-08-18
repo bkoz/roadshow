@@ -7,11 +7,11 @@ Webhooks from github will not work with the CDK because its IP address
 
 To simulate a web hook:
 
-1) Make code changes to https://github.com/YOUR_GITHUB_USER_NAME/openshift3mlbparks/blob/master/src/main/webapp/index.html on github.com
+1) Make source code changes to https://github.com/YOUR_GITHUB_USER_NAME/openshift3mlbparks/blob/master/src/main/webapp/index.html on github.com
 
 2) Copy the generic web hook from the web console's build configuration and use curl from your laptop to POST the webhook.
 
-      curl -i -H "Accept: application/json" -H "X-HTTP-Method-Override: PUT" -X POST -k <GENERIC_WEBHOOK_URL_FROM_BUILD_CONFIG>
+      $ curl -i -H "Accept: application/json" -H "X-HTTP-Method-Override: PUT" -X POST -k <GENERIC_WEBHOOK_URL_FROM_BUILD_CONFIG>
 
 The instructor may be able to demonstrate webhooks using a public facing OpenShift instance.
 
