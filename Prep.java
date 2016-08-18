@@ -22,7 +22,7 @@ class Prep {
 
                     String tail = new String("</xmp>\n" +
                             "\n" +
-                            "<script src=\"http://training.runcloudrun.com/v/0.2/strapdown.js\"></script>");
+                            "<script src=\"http://presto.haveopen.com/~bkozdemb/workshop/scripts/strapdown.js\"></script>");
 
                     FileInputStream fis = new FileInputStream(new File(names.get(i)));
 
