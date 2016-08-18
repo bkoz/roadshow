@@ -23,10 +23,14 @@ have issued a single command! Just remember that it is important for you to
 understand how to create, deploy, and wire resources together.  In order for the
 magic to happen, first create a new project and add the template to the project:
 
-	$ oc new-project userXX-template
-	$ oc create -f https://raw.githubusercontent.com/gshipley/openshift3mlbparks/master/mlbparks-template.json
+	$ oc new-project template
+	$ oc create -f https://raw.githubusercontent.com/bkoz/openshift3mlbparks/master/mlbparks-template.json
 
 Now we have access to the application template in our project.  As a side note, administrators have the capability to add templates to the general *openshift* project which will in turn provide an application template to any user on the system.
+
+List your templates.
+
+        $ oc get templates
 
 Are you ready for the magic command?  Here it is:
 
@@ -52,7 +56,7 @@ One other nifty thing that happened is that a route was created for you automati
 	$ oc get routes
 
 	NAME                  HOST/PORT                                                             PATH      SERVICE         LABELS
-	mlbparks-http-route   mlbparks-http.userXX-template.cloudapps.test.openshift3roadshow.com             mlbparks-http   application=mlbparks,template=mlbparks
+	mlbparks-http-route   http://mlbparks-http-route-mytemplate.rhel-cdk.10.1.2.2.xip.io        mlbparks-http   application=mlbparks,template=mlbparks
 
 OpenShift will automatically start a build for you. When it is complete, visit
 your app. Does it work? Think about how this could be used in your environment.
@@ -61,9 +65,9 @@ For example, a template could define a large set of resources that make up a
 You could deploy the entire set of resources with one command, and then hack on
 them to develop new features, microservices, fix bugs, and more.
 
-As a final exercise, look at the template that was used to create the
+As a final exercise, look at the [template](https://raw.githubusercontent.com/bkoz/openshift3mlbparks/master/mlbparks-template.json) that was used to create the
 resources for our *mlbparks* application.
 
-    https://raw.githubusercontent.com/gshipley/openshift3mlbparks/master/mlbparks-template.json
+**[mlbparks template](https://raw.githubusercontent.com/bkoz/openshift3mlbparks/master/mlbparks-template.json)**
 
 **End of Lab 9**
