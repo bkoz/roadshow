@@ -2,7 +2,8 @@
 
 ###** Using the Command Line Interface (CLI)**
 
-The first thing we want to do to ensure that the *oc* command line tool was installed and successfully added to our path is login to the OpenShift Enterprise 3.0 environment that has been provided for this Roadshow session.  In order to login, we will use the *oc* command and then specify the server that we want to authenticate to.  Issue the following command:
+The first thing we want to do to ensure that the *oc* command line tool was installed and successfully added to our path is login to the OpenShift Enterprise 3.0 environment that has been provided for this Roadshow session.  In order to login, we will use the *oc* command and then specify the server that we want to authenticate to. From your laptop, issue 
+the following command:
 
 	$ oc login --username=openshift-dev --password=devel --server=10.1.2.2:8443
     
@@ -14,15 +15,14 @@ their content in isolation from other communities. Each project has its own
 resources, policies (who can or cannot perform actions), and constraints (quotas
 and limits on resources, etc).  Projects act as a "wrapper" around all the
 application services and endpoints you (or your teams) are using for your work.
-For this first lab, we are going to use a project named *userXX-smoke* that has been
-created and populated with an application for you.
+For this first lab, we are going to create a project and add an application.
+
 
 During this lab, we are going to use a few different commands to make sure that
 things in the environment are working as expected.  Don't worry if you don't
 understand all of the terminology as we will cover it in detail in later labs.
 
-The first thing we want to do is switch to the *userXX-smoke* project. You
-can do this with the following command:
+The first thing we want to do is create a project.
 
 	$ oc new-project smoke
    
