@@ -23,17 +23,10 @@ server. Examples of containers you might put in a pod are, an Apache HTTPD
 server, a log analyzer, and a file service to help manage uploaded files.
 
 Let's look at the pods that were deployed as part of the *smoke* application in
-the *userXX-smoke* Project.
+the *smoke* Project.
 
 	$ oc get pods
     
-You should see output similar to the following:
-
-    NAME            READY     REASON       RESTARTS   AGE
-    smoke-1-32gkx   1/1       Running      0          11m
-    smoke-1-build   0/1       ExitCode:0   0          15m
-    smoke-1-fsghf   1/1       Running      0          8m
-
 The above output lists all of the pods in the current Project, including the pod
 name, state, restarts, and uptime for the pod.  Once you have a Pod's name, you
 can get more information about the Pod's using the *oc get* command.  To make
@@ -42,28 +35,9 @@ following syntax:
 
 **Note:** Make sure you use the correct Pod name from your output.
 
-	$  oc get pod smoke-1-32gkx -o json
+	$  oc get pod <pod_name> -o json
     
-You should see something like the following output (which is have truncated due
-to space considerations of this workshop manual):
-
-    {
-        "kind": "Pod",
-        "apiVersion": "v1",
-        "metadata": {
-            "name": "smoke-1-32gkx",
-            "generateName": "smoke-1-",
-            "namespace": "userXX-smoke",
-            "selfLink": "/api/v1/namespaces/userXX-smoke/pods/smoke-1-32gkx",
-            "uid": "d0273a35-36c8-11e5-8992-0a8636c3fd6f",
-            "resourceVersion": "161650",
-            "creationTimestamp": "2015-07-30T14:39:41Z",
-            "labels": {
-                "deployment": "smoke-1",
-                "deploymentconfig": "smoke",
-                "generatedby": "OpenShiftWebConsole",
-                "name": "smoke"
-            },...............
+The output should provide addtional details about the running pod.
             
 ###** Exercise 1: Deploying your first Image **
 
@@ -76,12 +50,12 @@ The first thing we want to do is create a new Project called *userXX-guestbook*.
 Remember that Projects group resources together. Ensure that you replace
 *userXX* with your correct user number:
 
-	$ oc new-project userXX-guestbook
+	$ oc new-project guestbook
 
 The *new-project* command will automatically switch you to use that Project. You
 will see something like the following:
 
-    Now using project "user36-guestbook" on server "https://openshift-master.chicago.openshift3roadshow.com:8443".
+    Now using project "guestbook" on server "https://openshift-master.chicago.openshift3roadshow.com:8443".
 
 To see all the Projects you have access to, you can simply use *oc get*.
 
@@ -90,8 +64,8 @@ To see all the Projects you have access to, you can simply use *oc get*.
 You should see a list like the following:
 
     NAME               DISPLAY NAME   STATUS
-    user36-guestbook                  Active
-    user36-smoke       Smoke Test     Active
+    guestbook                  Active
+    smoke       Smoke Test     Active
 
 With the new Project created, in order to tell OpenShift to define and run the
 Docker image, you can simply execute the following command:
@@ -115,7 +89,7 @@ already have it locally. You can check on the status of the image download and
 deployment by:
 
 1. Going into the web console
-1. Select Project *userXX-guestbook* 
+1. Select Project *guestbook* 
 1. Select *Browse*
 1. Select *Pods* 
 
