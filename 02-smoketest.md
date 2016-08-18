@@ -7,6 +7,10 @@ the following command:
 
 	$ oc login --username=openshift-dev --password=devel --server=10.1.2.2:8443
     
+###** Open the Web Console **
+
+Connect to the [OpenShift Web Console](https://10.1.2.2:8443)
+
 ###**Creating a project**
 
 Projects are a top level concept to help you organize your deployments. An
@@ -24,7 +28,7 @@ understand all of the terminology as we will cover it in detail in later labs.
 
 The first thing we want to do is create a project.
 
-	$ oc new-project smoke
+	$ oc new-project smoke --display-name="Smoke Test" --description="Tests OpenShift"
    
 You will see the following confirmation message:
 
