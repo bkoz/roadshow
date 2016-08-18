@@ -154,10 +154,17 @@ You can also view the first json document in the teams collection with the follo
 
 	> db.teams.findOne();
 
-Exit the mongo shell and the container bash.
+Exit the mongo shell.
 
         > exit
-        bash-4.2$ exit
+
+Try a few Linux commands while you're inside the container:
+
+        bash-4.2$ ps -ef
+        bash-4.2$ ip a
         
+Exit the container bash.
+        
+        bash-4.2$ exit
 
 **End of Lab 7**

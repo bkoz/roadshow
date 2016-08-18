@@ -9,7 +9,7 @@ the following command:
     
 ###** Open the Web Console **
 
-Connect to the [OpenShift Web Console](https://10.1.2.2:8443)
+In a separate tab, connect to the [OpenShift Web Console](https://10.1.2.2:8443)
 
 ###**Creating a project**
 
